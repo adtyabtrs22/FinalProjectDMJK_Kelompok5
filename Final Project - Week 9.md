@@ -232,7 +232,7 @@ Berikut adalah penghubungan antara perangkat perangkat di atas yang akan cocok m
     * **Kabel:** Gunakan kabel **Copper Straight-Through**.
     * **Port:** Sambungkan port GigabitEthernet (misal, `GigabitEthernet0/1`) di Router B ke salah satu port GigabitEthernet (misal, `GigabitEthernet1/0/1`) di Switch Layer 3 Gedung B.
 * **Switch Layer 3 <--> Switch Access (di tiap Gedung):**
-    * **Kabel:** Gunakan kabel **Copper Straight-Through**. Sebaiknya pakai port GigabitEthernet di kedua ujung jika memungkinkan untuk kecepatan maksimal antar switch.
+    * **Kabel:** Gunakan kabel **Copper Cross-Over**. Sebaiknya pakai port GigabitEthernet di kedua ujung jika memungkinkan untuk kecepatan maksimal antar switch.
     * **Port:** Sambungkan beberapa port GigabitEthernet (misal, `GigabitEthernet1/0/2`, `1/0/3`, dst.) di Switch Layer 3 ke port GigabitEthernet (misal, `GigabitEthernet0/1` atau `0/2`) di masing-masing Switch Access.
     * **Penting:** Port-port ini harus dikonfigurasi sebagai **Trunk** agar bisa dilewati data dari berbagai VLAN.
 * **Switch Access <--> Komputer Klien / Server:**
