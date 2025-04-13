@@ -21,8 +21,6 @@
     * [2.4 Pengaturan Rute (Routing)](#24-pengaturan-rute-routing)
     * [2.5 Akses Internet & Layanan Dasar](#25-akses-internet--layanan-dasar)
     * [2.6 Keamanan Jaringan](#26-keamanan-jaringan)
-    * [2.7 Manajemen & Pemantauan](#27-manajemen--pemantauan)
-    * [2.8 Kemudahan Pengembangan & Efisiensi](#28-kemudahan-pengembangan--efisiensi)
 3.  [Rencana Pengalamatan IP PT. Nusantara Network](#3-rencana-pengalamatan-ip-pt-nusantara-network)
     * [3.1 Tabel Pembagian Alamat IP](#31-tabel-pembagian-alamat-ip)
     * [3.2 Contoh Pembagian Alamat IP di Server Farm](#32-contoh-pembagian-alamat-ip-di-server-farm)
@@ -100,14 +98,6 @@ Dari penjelasan kasus PT. Nusantara Network, kita bisa simpulkan kebutuhan jarin
 
 * **ACL (Access Control List):** Perlu dibuat daftar aturan (ACL) untuk membatasi siapa saja yang boleh mengakses bagian jaringan tertentu. Contohnya, departemen mana yang boleh akses server, atau departemen mana yang tidak boleh saling berhubungan langsung. Aturan detailnya perlu dibuat nanti.
 * **Firewall (Konsep):** Perlu ada sistem keamanan di perbatasan jaringan (perimeter) untuk melindungi dari ancaman luar. Konsep firewall akan dipertimbangkan.
-
-### 2.7 Manajemen & Pemantauan
-
-* **Yang Dibutuhkan:** Perlu cara untuk memantau kondisi jaringan dan mengelolanya dari satu tempat (terpusat). Implementasi detailnya mungkin sederhana, tapi desainnya harus memikirkan kemudahan pengelolaan (misal: nama alat yang jelas, catatan yang rapi, mungkin pakai **SNMP** kalau didukung).
-
-### 2.8 Kemudahan Pengembangan & Efisiensi
-
-* **Tujuan Umum:** Jaringan yang dibuat harus hemat sumber daya (alamat IP, bandwidth), gampang diurus, dan mudah kalau mau ditambah atau diubah di kemudian hari (*scalable*).
 
 ## 3. Rencana Pengalamatan IP PT. Nusantara Network
 
