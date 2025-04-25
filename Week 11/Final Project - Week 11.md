@@ -23,7 +23,7 @@
 
 ![alt text](topologi.png)
 
-**Link Drive Topologi .pkt:** https://drive.google.com/file/d/18Q3qxJoxnuul5Qn-M0sWaVh9eqH_uI5v/view?usp=sharing
+**Link Drive Topologi .pkt:** Topologi ada di github
 
 Gambar tersebut merupakan desain topologi jaringan untuk dua gedung, yaitu Gedung A (Kantor Pusat) dan Gedung B (Kantor Cabang). Desain jaringan ini mencakup struktur topologi fisik dan topologi logis (IP Address & VLAN) untuk memastikan koneksi antar departemen berjalan efisien, aman, dan mudah dikelola.
 
