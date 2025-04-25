@@ -1,4 +1,4 @@
-# Desain Topologi & Skema Pengalamatan - Pekan 10
+# Implementasi Topologi Dasar & VLAN - Pekan 11
 
 ## Daftar Anggota Kelompok 5 DMJK Beserta Peran
 
