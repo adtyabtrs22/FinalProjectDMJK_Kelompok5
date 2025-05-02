@@ -1,4 +1,4 @@
-# Desain Topologi & Skema Pengalamatan - Pekan 10
+# Implementasi Topologi Dasar & VLAN - Pekan 11
 
 ## Daftar Anggota Kelompok 5 DMJK Beserta Peran
 
@@ -23,7 +23,9 @@
 
 ![alt text](topologi.png)
 
-**Link Drive Topologi .pkt:** https://drive.google.com/file/d/18Q3qxJoxnuul5Qn-M0sWaVh9eqH_uI5v/view?usp=sharing
+**Link Drive Topologi .pkt:** Topologi ada di github ini 
+
+https://github.com/adtyabtrs22/FinalProjectDMJK_Kelompok5/blob/main/Week%2011/Topologi%20Kelompok%205_Week%20-%2011.pkt
 
 Gambar tersebut merupakan desain topologi jaringan untuk dua gedung, yaitu Gedung A (Kantor Pusat) dan Gedung B (Kantor Cabang). Desain jaringan ini mencakup struktur topologi fisik dan topologi logis (IP Address & VLAN) untuk memastikan koneksi antar departemen berjalan efisien, aman, dan mudah dikelola.
 
@@ -132,7 +134,25 @@ Sebagai bagian dari strategi keamanan jaringan di PT. Nusantara Network, kami me
 
 ## Kesimpulan dan Pembelajaran
 
-Kesimpulan yang bisa didapat dari Pekan 10 - Desain Topologi & Skema Pengalamatan ini ialah bahwa secara keseluruhan, perancangan jaringan ini mengajarkan pentingnya perencanaan alamat IP dan segmentasi VLAN sejak awal agar setiap departemen—mulai dari IT, Keuangan, SDM, hingga Server Farm—memiliki ruang alamat yang cukup, aman, dan terisolasi; penggunaan subnet /30 untuk link point‑to‑point WAN serta penerapan OSPF memastikan konektivitas antar‑gedung yang efisien; DHCP yang dipisahkan per VLAN memudahkan alokasi otomatis sementara server tetap ber-IP statis agar layanan selalu dapat diakses dengan konsisten; IP management pada switch memberi kemudahan konfigurasi jarak jauh; dan NAT pada router utama memungkinkan akses internet terkontrol tanpa mengorbankan keamanan. Desain hierarki ini sekaligus menyiapkan skalabilitas di masa depan, sehingga penambahan perangkat baru atau perluasan layanan tidak memerlukan redesain besar‑besaran.
+## 📌 Kesimpulan Pekan 11 – Implementasi Topologi Dasar & VLAN
+
+Pada pekan ke-11 ini, kami berhasil mengimplementasikan topologi dasar jaringan sesuai dengan rancangan pada minggu-minggu sebelumnya. Proses implementasi dilakukan menggunakan Cisco Packet Tracer, dengan fokus pada pembangunan konektivitas internal antardepartemen di masing-masing gedung melalui konfigurasi VLAN, trunking, dan routing antar-VLAN.
+
+Beberapa pencapaian utama dalam pekan ini meliputi:
+
+- Implementasi struktur topologi fisik dan logis di Cisco Packet Tracer, mencakup koneksi antar switch akses, switch core (Layer 3), dan router per gedung.
+- Konfigurasi VLAN untuk setiap departemen berdasarkan pembagian segmentasi jaringan:
+  - VLAN 10 (IT)
+  - VLAN 20 (Keuangan)
+  - VLAN 30 (SDM)
+  - VLAN 40 (Server Farm)
+  - VLAN 50 (Marketing)
+  - VLAN 60 (Operasional)
+- Konfigurasi **trunking antar switch** untuk memastikan semua VLAN dapat ditransmisikan dari switch core ke switch akses.
+- Konfigurasi **interface VLAN (SVI)** pada switch Layer 3 di tiap gedung untuk mendukung **inter-VLAN routing**.
+- Pengujian konektivitas antar VLAN berhasil dilakukan, menunjukkan bahwa setiap departemen dapat saling terhubung sesuai dengan kebijakan akses yang berlaku.
+
+Dengan pencapaian tersebut, tahap implementasi jaringan lokal (LAN) antar departemen sudah berhasil dibangun secara fungsional dan sesuai standar enterprise network. Implementasi ini menjadi pondasi penting untuk pekan berikutnya, yang akan berfokus pada routing antar-gedung (WAN), layanan DHCP dan DNS, serta penguatan keamanan jaringan dengan NAT dan ACL.
 
 ## Link Repository Github
 
