@@ -441,7 +441,7 @@ Dengan selesainya implementasi layanan ini, jaringan PT. Nusantara Network kini 
 ## 7. Link File Simulasi (.pkt)
 
 *Link ke file Packet Tracer (.pkt) yang telah diperbarui dengan konfigurasi Pekan 13 akan ditambahkan di sini.*
-`[Topologi Kelompok 5_Week - 13.pkt](Topologi Kelompok 5_Week - 13.pkt)`
+https://github.com/adtyabtrs22/FinalProjectDMJK_Kelompok5/blob/main/Week%2013/Topologi%20Kelompok%205_Week%20-%2013.pkt
 
 ---
 
