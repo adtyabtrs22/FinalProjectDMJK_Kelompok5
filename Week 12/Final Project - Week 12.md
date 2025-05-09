@@ -104,10 +104,12 @@ interface GigabitEthernet0/0/1.40
 
 Hasil `show ip interface brief` dari router A
 ![alt text](img/image.png)
+
 *Penjelasan Gambar: Output ini menunjukkan ringkasan konfigurasi IP pada Router Gedung A. Terlihat bahwa interface `GigabitEthernet0/0/0` (menghubungkan ke Router Utama) memiliki IP `192.168.30.2`. Selain itu, terdapat beberapa sub-interface (`GigabitEthernet0/0/1.10`, `.20`, `.30`, `.40`) yang mewakili gateway untuk masing-masing VLAN di Gedung A (VLAN 10 IT, 20 Keuangan, 30 SDM, 40 ServerFarm). Kolom 'Status' dan 'Protocol' yang menunjukkan `up` menandakan bahwa interface tersebut aktif dan dapat berkomunikasi di Layer 1 dan Layer 2.*
 
 Hasil `show ip interface brief` dari main switch A
 ![alt text](img/image-1.png)
+
 *Penjelasan Gambar: Output ini berasal dari Switch Layer 3 (Main Switch) di Gedung A. Terlihat beberapa interface VLAN (SVI - Switched Virtual Interface) seperti `Vlan10`, `Vlan20`, `Vlan30`, `Vlan40`. Setiap SVI memiliki IP address yang berfungsi sebagai gateway default untuk perangkat di VLAN tersebut (misal, `192.168.10.2/26` untuk Vlan10). Interface `GigabitEthernet0/0/1` (yang terhubung ke Router Gedung A) kemungkinan dikonfigurasi sebagai trunk port (tidak terlihat di output ini). Status `up`/`up` menunjukkan SVI aktif dan dapat melakukan routing antar VLAN.*
 
 **Konfigurasi Rute Statis pada Router Gedung B:**
@@ -140,10 +142,12 @@ ip route 0.0.0.0 0.0.0.0 192.168.30.5
 
 Hasil `show ip interface brief` dari router B
 ![alt text](img/image-2.png)
+
 *Penjelasan Gambar: Output ini menampilkan ringkasan IP pada Router Gedung B. Interface `GigabitEthernet0/0/0` terhubung ke Router Utama dengan IP `192.168.30.6`. Sub-interface `GigabitEthernet0/0/1.50` dan `.60` berfungsi sebagai gateway untuk VLAN 50 (Marketing) dan VLAN 60 (Operasional) di Gedung B. Semua interface yang relevan menunjukkan status `up`/`up`, menandakan konektivitas fisik dan data link yang baik.*
 
 Hasil `show ip interface brief` dari main switch B
 ![alt text](img/image-3.png)
+
 *Penjelasan Gambar: Ini adalah output dari Switch Layer 3 (Main Switch) di Gedung B. Terlihat SVI `Vlan50` dan `Vlan60` dengan IP address gateway masing-masing (`192.168.20.2/26` dan `192.168.20.66/26`). Interface `GigabitEthernet0/0/1` yang terhubung ke Router Gedung B kemungkinan adalah trunk. Status `up`/`up` mengindikasikan SVI aktif dan siap untuk routing antar VLAN di Gedung B.*
 
 **Konfigurasi Rute Statis pada Router Utama:**
@@ -176,6 +180,7 @@ interface GigabitEthernet0/2
 
 Hasil `show ip interface brief` dari router Utama
 ![alt text](img/image-4.png)
+
 *Penjelasan Gambar: Output ini berasal dari Router Utama. Interface `GigabitEthernet0/0` terhubung ke Router Gedung A dengan IP `192.168.30.1`. Interface `GigabitEthernet0/1` terhubung ke Router Gedung B dengan IP `192.168.30.5`. Interface `GigabitEthernet0/2` terhubung ke ISP (simulasi) dengan IP `192.168.30.9`. Semua interface ini aktif (`up`/`up`). Jika ada workaround SVI Vlan1 untuk koneksi ke Gedung B (seperti disebut di kendala), maka `interface Vlan1` juga akan muncul dengan IP `192.168.30.5` dan status `up`/`up`.*
 
 
@@ -285,10 +290,12 @@ Perintah ini dijalankan pada ketiga router untuk memastikan adjacency OSPF telah
 
 *   **(Contoh) Router Gedung A:**
     ![alt text](img/image-6.png)
+    
     *Penjelasan: Output ini dari Router Gedung A. Terlihat satu tetangga OSPF, yaitu Router Utama (dengan Router ID `3.3.3.3`), yang terhubung melalui interface `GigabitEthernet0/0/0` milik Router A. Status `FULL/DROTHER` menunjukkan hubungan OSPF yang sukses terbentuk.*
 
      **(Contoh) Router Gedung B:**
     ![alt text](img/image-7.png)
+    
     *Penjelasan: Output ini dari Router Gedung B. Sama seperti Router A, ia menunjukkan satu tetangga OSPF, yaitu Router Utama (Router ID `3.3.3.3`), terhubung melalui interface `GigabitEthernet0/0/0` milik Router B. Status `FULL/DROTHER` mengonfirmasi hubungan OSPF yang valid.*
 
 ### 7.2 Verifikasi Tabel Routing (`show ip route`)
@@ -297,6 +304,7 @@ Perintah ini dijalankan pada semua router dan L3 Switch untuk memeriksa rute yan
 
 *   **Router Utama:** Harusnya melihat rute OSPF (O, O E2) ke semua subnet internal di Gedung A dan B.
     ![alt text](img/image-8.png)
+    
     *Penjelasan: Tabel routing di Router Utama menunjukkan bagaimana router ini akan meneruskan paket ke berbagai tujuan. Kita melihat beberapa tipe rute:*
     *   *`C` (Connected): Jaringan yang terhubung langsung, seperti `192.168.30.0/30` (ke Router A), `192.168.30.4/30` (ke Router B), dan `192.168.30.8/30` (ke ISP).*
     *   *`L` (Local): IP address spesifik yang dikonfigurasi pada interface router itu sendiri.*
@@ -304,6 +312,7 @@ Perintah ini dijalankan pada semua router dan L3 Switch untuk memeriksa rute yan
 
 *   **Router Gedung A:** Harusnya melihat rute statis (S) ke VLAN internalnya, rute OSPF (O, O E2) ke subnet Gedung B, dan rute default OSPF (O*E2) jika diiklankan.
     ![alt text](img/image-11.png)
+    
     *Penjelasan: Tabel routing Router Gedung A menampilkan:*
     *   *`C` dan `L`: Jaringan yang terhubung langsung (link ke Router Utama `192.168.30.0/30` dan sub-interface VLAN `192.168.10.x`).*
     *   *`O` (OSPF): Rute ke jaringan WAN lain yang dipelajari dari Router Utama, seperti `192.168.30.4/30` (link antara Router Utama dan Router B).*
@@ -313,6 +322,7 @@ Perintah ini dijalankan pada semua router dan L3 Switch untuk memeriksa rute yan
 
 *   **Router Gedung B:** Serupa dengan Router A, tetapi untuk jaringan Gedung A.
     ![alt text](img/image-12.png)
+    
     *Penjelasan: Tabel routing Router Gedung B menunjukkan:*
     *   *`C` dan `L`: Jaringan terhubung langsung (link ke Router Utama `192.168.30.4/30` dan sub-interface VLAN `192.168.20.x`).*
     *   *`S*` (Static Default): Rute default `0.0.0.0/0` yang dikonfigurasi secara manual (`ip route 0.0.0.0 0.0.0.0 192.168.30.5`) untuk mengarahkan semua traffic tujuan tidak dikenal ke Router Utama.*
@@ -321,12 +331,14 @@ Perintah ini dijalankan pada semua router dan L3 Switch untuk memeriksa rute yan
 
 *   **Switch L3 A:** Harusnya melihat rute Connected (C), Local (L) untuk VLAN internal dan link ke Router A, serta rute default statis (S*).
     ![alt text](img/image-13.png)
+    
     *Penjelasan: Tabel routing pada Switch Layer 3 Gedung A menunjukkan:*
     *   *`C` dan `L`: Jaringan VLAN internal (`192.168.10.0/26`, `192.168.10.64/27`, `192.168.10.96/27`, `192.168.10.128/28`) yang terhubung langsung melalui SVI (interface Vlan10, Vlan20, dst.).*
     *   *`S*` (Static Default): Rute default `0.0.0.0/0` yang menunjuk ke `192.168.10.1`. Ini adalah IP address Router Gedung A pada link yang menghubungkan switch ini. Rute ini penting agar switch tahu ke mana harus mengirim traffic yang ditujukan ke luar jaringan lokal Gedung A (misalnya ke Gedung B atau internet).*
 
 *   **Switch L3 B:** Serupa dengan Switch L3 A.
     ![alt text](img/image-14.png)
+    
     *Penjelasan: Tabel routing pada Switch Layer 3 Gedung B menunjukkan:*
     *   *`C` dan `L`: Jaringan VLAN internal (`192.168.20.0/26`, `192.168.20.64/26`) yang terhubung melalui SVI (Vlan50, Vlan60).*
     *   *`S*` (Static Default): Rute default `0.0.0.0/0` yang menunjuk ke `192.168.20.1` (IP address Router Gedung B). Fungsinya sama seperti pada Switch L3 A, yaitu mengarahkan traffic keluar Gedung B.*
@@ -337,14 +349,17 @@ Pengujian ping dari PC di satu gedung ke PC/Server di gedung lain.
 
 *   **Ping Gedung A ke Gedung B:**
     ![alt text](img/image-15.png)
+    
     *Penjelasan: Gambar ini menunjukkan hasil perintah `ping` dari sebuah PC di Gedung A (kemungkinan di VLAN IT, misal IP `192.168.10.10`) ke sebuah PC di Gedung B (kemungkinan di VLAN Marketing, misal IP `192.168.20.10`). Hasil `Reply from ...` menunjukkan bahwa ping berhasil. Ini membuktikan bahwa paket ICMP (ping) dapat berjalan dari PC A -> Switch L3 A -> Router A -> Router Utama -> Router B -> Switch L3 B -> PC B, dan balasannya kembali melalui jalur yang sama. Ini memvalidasi konektivitas end-to-end antar gedung melalui rute OSPF yang telah dikonfigurasi.*
 
 *   **Ping Gedung B ke Gedung A (Server):**
     ![alt text](img/image-16.png)
+    
     *Penjelasan: Gambar ini menunjukkan hasil `ping` dari PC di Gedung B (misal VLAN Marketing, IP `192.168.20.86`) ke sebuah Server di Gedung A (VLAN ServerFarm, IP `192.168.10.131`). Hasil `Reply from ...` menandakan ping sukses. Ini kembali mengonfirmasi bahwa routing antar gedung berfungsi dengan baik, memungkinkan komunikasi antara VLAN yang berbeda di gedung yang berbeda.*
 
 *   **Ping Gedung B ke Gedung A (Server):**
     ![alt text](img/image-17.png)
+    
     *Penjelasan: Gambar ini kemungkinan adalah hasil ping lain antar PC/Server di gedung yang berbeda, memberikan bukti tambahan bahwa konfigurasi routing OSPF dan rute default pada switch L3 telah berhasil membangun konektivitas menyeluruh antar lokasi sesuai desain jaringan. Keberhasilan ping ini adalah validasi akhir dari implementasi routing Pekan 12.*
 
 ---
