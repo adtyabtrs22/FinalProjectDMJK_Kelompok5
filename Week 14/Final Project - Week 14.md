@@ -189,11 +189,11 @@ Router Utama dengan ACL untuk blokir Marketing ke Server Farm:
 #### Screenshot Hasil Pengujian ACL
 
 Uji ping SDM memblokir keuangan:
-![Screenshot Hasil Pengujian ACL](img/ACL/blok-sdm-ke-keuangan-hasil.jpg)
+![Screenshot Hasil Pengujian ACL](img/ACL/blok-sdm-ke-keuangan-hasil.JPG)
 *Penjelasan: Screenshot ini menampilkan hasil dari perintah `ping` yang dijalankan dari PC di VLAN SDM ke PC di VLAN Keuangan. Hasil "Request timed out" (atau sejenisnya) menunjukkan bahwa ping gagal, memvalidasi bahwa ACL yang memblokir akses SDM ke Keuangan berfungsi dengan benar.*
 
 Uji ping Marketing memblokir server farm:
-![Screenshot Hasil Pengujian ACL](img/ACL/blok-marketing-ke-serverfarm-hasil.jpg)
+![Screenshot Hasil Pengujian ACL](img/ACL/blok-marketing-ke-serverfarm-hasil.JPG)
 *Penjelasan: Screenshot ini menampilkan hasil perintah `ping` dari PC di VLAN Marketing ke server di VLAN Server Farm. Hasil "Request timed out" (atau sejenisnya) menunjukkan kegagalan koneksi, yang memvalidasi bahwa ACL untuk memblokir akses Marketing ke Server Farm telah berhasil diimplementasikan.*
 
 
