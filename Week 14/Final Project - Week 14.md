@@ -271,3 +271,9 @@ Implementasi ACL telah meningkatkan keamanan, namun keamanan adalah proses berke
 
 ## Kesimpulan
 Pekan ke-14 difokuskan pada implementasi kebijakan keamanan menggunakan Access Control Lists (ACL) dan pengujian menyeluruh layanan jaringan. Konfigurasi ACL berhasil diterapkan sesuai kebijakan blokir dan izin akses antar VLAN. Pengujian melalui matriks pengujian telah memvalidasi fungsionalitas ACL serta layanan DHCP, DNS, dan NAT dari pekan sebelumnya. Proses *troubleshooting* telah disiapkan untuk didokumentasikan. Analisis keamanan menunjukkan peningkatan postur keamanan jaringan PT. Nusantara Network, dengan beberapa rekomendasi untuk peningkatan lebih lanjut. Jaringan kini lebih aman dan siap untuk tahap finalisasi. 
+
+# Link Repository Github
+
+https://github.com/adtyabtrs22/FinalProjectDMJK_Kelompok5
+
+--- 
